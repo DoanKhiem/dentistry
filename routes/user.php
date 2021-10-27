@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user\HomeController;
+use App\Http\Controllers\user\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +29,16 @@ use App\Http\Controllers\user\HomeController;
     Route::get('/blog', [HomeController::class , 'index'])->name('user.blog');
     // blog-detail
     Route::get('/blog-detail/{id}', [HomeController::class , 'blogDetail'])->name('user.blogDetail');
+    //    Account
+    Route::get('/login', [AccountController::class, 'login'])->name('user.login');
+    Route::post('/login', [AccountController::class, 'check_login'])->name('user.check_login');
+    Route::get('/logout', [AccountController::class, 'logout'])->name('user.logout');
 
-    // cart
+    Route::get('/register', [AccountController::class, 'register'])->name('user.register');
+    Route::post('/register', [AccountController::class, 'check_register'])->name('user.check_register');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('user.profile');
+
+// cart
     Route::get('/cart', function () {
         return view('user.cart');
     })->name('user.cart');

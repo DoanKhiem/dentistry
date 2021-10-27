@@ -11,7 +11,7 @@
         <!-- Breadcrumb Start -->
         @include('user.layouts.breadcrumb-area')
         <!-- Breadcrumb End -->
-        
+
         <!-- LogIn Page Start -->
         <div class="log-in ptb-100 ptb-sm-60">
             <div class="container">
@@ -34,14 +34,15 @@
                             <div class="return-customer">
                                 <h3 class="mb-10 custom-title">returnng customer</h3>
                                 <p class="mb-10"><strong>I am a returning customer</strong></p>
-                                <form action="#">
+                                <form action="user.check_login" method="post">
+                                    @csrf
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="text" name="email" placeholder="Enter your email address..." id="input-email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="text" name="pass" placeholder="Password" id="input-password" class="form-control">
+                                        <input type="text" name="password" placeholder="Password" id="input-password" class="form-control">
                                     </div>
                                     <p class="lost-password"><a href="forgot-password.html">Forgot password?</a></p>
                                     <input type="submit" value="Login" class="return-customer-btn">
