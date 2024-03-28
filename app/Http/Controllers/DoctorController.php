@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -11,7 +12,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('doctor.index');
+        $datas = Doctor::orderBy('created_at', 'desc')->get();
+        return view('doctor.index', compact('datas'));
     }
 
     /**

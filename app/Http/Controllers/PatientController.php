@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -11,7 +12,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('patient.index');
+        $datas = Patient::orderBy('created_at', 'desc')->get();
+        return view('patient.index', compact('datas'));
     }
 
     /**

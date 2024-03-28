@@ -52,21 +52,30 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($datas as $item)
                                         <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>2008/11/28</td>
-                                        <td>
-                                            <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button" value="Input"><i class="fa fa-edit"></i></button>
-                                            <button class="btn btn-rounded btn-danger btn-xs mb-3" type="reset" value="Reset"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                        <td>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->position }}</td>
+                                            <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->address }}</td>
+                                            <td>
+                                                <a href="{{route('staff.edit', $item->id)}}">
+                                                    <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"
+                                                            value="Input"><i class="fa fa-edit"></i></button>
+                                                </a>
+                                                <form action="{{route('staff.destroy', $item->id)}}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-rounded btn-danger btn-xs mb-3" type="button"
+                                                            value="Reset"><i class="fa fa-trash"></i></button>
+                                                </form>
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
