@@ -11,7 +11,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('service.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('service.create');
     }
 
     /**

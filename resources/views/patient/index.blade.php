@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Danh sách nhân viên</title>
+    <title>Danh sách bệnh nhân</title>
     @include('layouts.head')
 </head>
 
@@ -31,8 +31,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
-                                <h4 class="header-title">Danh sách nhân viên</h4>
-                                <a href="{{route('staff.create')}}">
+                                <h4 class="header-title">Danh sách bệnh nhân</h4>
+                                <a href="{{route('patient.create')}}">
                                     <button style="font-size: 16px" type="button" class="btn btn-primary btn-sm mb-3">
                                         <i style="margin-right: 10px" class="fa fa-plus"></i>Thêm mới</button>
                                 </a>
@@ -42,9 +42,8 @@
                                     <thead class="text-capitalize">
                                     <tr>
                                         <th>STT</th>
-                                        <th>Mã NV</th>
+                                        <th>Mã BN</th>
                                         <th>Họ và Tên</th>
-                                        <th>Chức vụ</th>
                                         <th>Số điện thoại</th>
                                         <th>Địa chỉ</th>
                                         <th>Hành dộng</th>
@@ -55,7 +54,6 @@
                                         <tr>
                                         <td>Airi Satou</td>
                                         <td>Accountant</td>
-                                        <td>Tokyo</td>
                                         <td>33</td>
                                         <td>2008/11/28</td>
                                         <td>2008/11/28</td>

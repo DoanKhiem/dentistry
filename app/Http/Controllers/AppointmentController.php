@@ -11,7 +11,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('appointment.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('appointment.create');
     }
 
     /**
