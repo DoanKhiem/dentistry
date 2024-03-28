@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Danh sách nhân viên</title>
+    <title>Danh sách cuộc hẹn</title>
     @include('layouts.head')
 </head>
 
@@ -31,8 +31,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
-                                <h4 class="header-title">Danh sách nhân viên</h4>
-                                <a href="{{route('staff.create')}}">
+                                <h4 class="header-title">Danh sách cuộc hẹn</h4>
+                                <a href="{{route('doctor.create')}}">
                                     <button style="font-size: 16px" type="button" class="btn btn-primary btn-sm mb-3">
                                         <i style="margin-right: 10px" class="fa fa-plus"></i>Thêm mới</button>
                                 </a>
@@ -42,11 +42,13 @@
                                     <thead class="text-capitalize">
                                     <tr>
                                         <th>STT</th>
-                                        <th>Mã NV</th>
-                                        <th>Họ và Tên</th>
-                                        <th>Chức vụ</th>
-                                        <th>Số điện thoại</th>
-                                        <th>Địa chỉ</th>
+                                        <th>Bệnh nhân</th>
+                                        <th>Bác sĩ</th>
+                                        <th>Ngày giờ</th>
+                                        <th>Trạng thái</th>
+                                        <th>Mã hóa đơn</th>
+                                        <th>Tổng hóa đơn</th>
+                                        <th>Tình trạng hóa đơn</th>
                                         <th>Hành dộng</th>
                                         <th>Hành dộng</th>
                                     </tr>
@@ -56,16 +58,18 @@
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->code }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->position }}</td>
-                                            <td>{{ $item->phone }}</td>
-                                            <td>{{ $item->address }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->code }}</td>
                                             <td>
-                                                <a href="{{route('staff.edit', $item->id)}}">
+                                                <a href="{{route('appointment.edit', $item->id)}}">
                                                     <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"
                                                             value="Input"><i class="fa fa-edit"></i></button>
                                                 </a>
-                                                <form action="{{route('staff.destroy', $item->id)}}" method="POST" class="d-inline">
+                                                <form action="{{route('appointment.destroy', $item->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-rounded btn-danger btn-xs mb-3" type="button"

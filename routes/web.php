@@ -26,6 +26,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // staff
+    Route::resource('staff', \App\Http\Controllers\StaffController::class);
+
+    // doctor
+    Route::resource('doctor', \App\Http\Controllers\DoctorController::class);
+
+    // patient
+    Route::resource('patient', \App\Http\Controllers\PatientController::class);
+
+    // appointment
+    Route::resource('appointment', \App\Http\Controllers\AppointmentController::class);
+
+    // service
+    Route::resource('service', \App\Http\Controllers\ServiceController::class);
 });
 
 require __DIR__.'/auth.php';
