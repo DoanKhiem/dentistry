@@ -73,6 +73,16 @@ class StaffController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Staff::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('staff.index')->with('success', 'Xóa nhân viên thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa nhân viên!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại nhân viên này!');
+        }
     }
 }

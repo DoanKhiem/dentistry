@@ -73,6 +73,16 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Doctor::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('doctor.index')->with('success', 'Xóa bác sĩ thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa bác sĩ!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại bác sĩ này!');
+        }
     }
 }

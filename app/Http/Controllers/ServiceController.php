@@ -72,6 +72,16 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('service.index')->with('success', 'Xóa dịch vụ thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa dịch vụ!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại dịch vụ này!');
+        }
     }
 }
