@@ -29,7 +29,18 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:services,code',
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        $data = $request->all();
+        $status = Service::create($data);
+        if ($status) {
+            return redirect()->route('service.index')->with('success', 'Thêm mới dịch vụ thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới dịch vụ');
+        }
     }
 
     /**

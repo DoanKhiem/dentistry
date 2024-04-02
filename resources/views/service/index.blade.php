@@ -28,11 +28,12 @@
             <div class="row">
                 <!-- Dark table start -->
                 <div class="col-12 mt-5">
+                    @include('layouts.notification')
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
                                 <h4 class="header-title">Danh sách dịch vụ</h4>
-                                <a href="{{route('staff.create')}}">
+                                <a href="{{route('service.create')}}">
                                     <button style="font-size: 16px" type="button" class="btn btn-primary btn-sm mb-3">
                                         <i style="margin-right: 10px" class="fa fa-plus"></i>Thêm mới</button>
                                 </a>
