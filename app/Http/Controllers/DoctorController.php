@@ -29,7 +29,19 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:doctors,code',
+            'name' => 'required',
+            'specialize' => 'required',
+            'phone' => 'required|unique:doctors,phone',
+        ]);
+        $data = $request->all();
+        $status = Doctor::create($data);
+        if ($status) {
+            return redirect()->route('doctor.index')->with('success', 'Thêm mới bác sĩ thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới bác sĩ');
+        }
     }
 
     /**
