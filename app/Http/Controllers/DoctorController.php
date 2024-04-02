@@ -29,7 +29,19 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:doctors,code',
+            'name' => 'required',
+            'specialize' => 'required',
+            'phone' => 'required|unique:doctors,phone',
+        ]);
+        $data = $request->all();
+        $status = Doctor::create($data);
+        if ($status) {
+            return redirect()->route('doctor.index')->with('success', 'Thêm mới bác sĩ thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới bác sĩ');
+        }
     }
 
     /**
@@ -45,7 +57,8 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Doctor::findOrFail($id);
+        return view('doctor.edit', compact('item'));
     }
 
     /**
@@ -53,7 +66,24 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Doctor::findOrFail($id);
+        if ($item) {
+            $this->validate($request, [
+                'code' => 'required|unique:doctors,code,' . $id,
+                'name' => 'required',
+                'specialize' => 'required',
+                'phone' => 'required|unique:doctors,phone,' . $id,
+            ]);
+            $data = $request->all();
+            $status = $item->update($data);
+            if ($status) {
+                return redirect()->route('doctor.index')->with('success', 'Cập nhật bác sĩ thành công');
+            } else {
+                return back()->with('error', 'Lỗi cập nhật bác sĩ');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại bác sĩ này!');
+        }
     }
 
     /**
@@ -61,6 +91,16 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Doctor::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('doctor.index')->with('success', 'Xóa bác sĩ thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa bác sĩ!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại bác sĩ này!');
+        }
     }
 }

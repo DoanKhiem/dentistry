@@ -59,7 +59,7 @@
 {{--                                    </select>--}}
                                 </div>
                             </div>
-                            <div id="coin_sales7" style="font-size: 40px">100000</div>
+                            <div id="coin_sales7" style="font-size: 40px">{{ $doctors->count() }}</div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
@@ -73,7 +73,7 @@
 {{--                                    </select>--}}
                                 </div>
                             </div>
-                            <div id="coin_sales7" style="font-size: 40px">100000</div>
+                            <div id="coin_sales7" style="font-size: 40px">{{ $patients->count() }}</div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-ml-3 col-md-6  mt-5">
@@ -87,7 +87,7 @@
 {{--                                    </select>--}}
                                 </div>
                             </div>
-                            <div id="coin_sales7" style="font-size: 40px">100000</div>
+                            <div id="coin_sales7" style="font-size: 40px">{{ $appointments->count() }}</div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
@@ -110,68 +110,17 @@
             <!-- order list area start -->
             <div class="card mt-5">
                 <div class="card-body">
-                    <h4 class="header-title">Todays Order List</h4>
+                    <h4 class="header-title">Danh sách lịch hẹn gần đây</h4>
                     <div class="table-responsive">
                         <table class="dbkit-table">
                             <tbody>
+                            @foreach($appointments->take(5) as $appointment)
                             <tr class="heading-td">
-                                <td>Product Name</td>
-                                <td>Product Code</td>
-                                <td>Order Status</td>
-                                <td>Client Number</td>
-                                <td>Zip Code</td>
-                                <td>View Order</td>
+                                <td>{{$appointment->name}}</td>
                             </tr>
-                            <tr>
-                                <td>Ladis Sunglass</td>
-                                <td>#894750374</td>
-                                <td><span class="pending_dot">Pending</span></td>
-                                <td>01976 74 92 00</td>
-                                <td>9241</td>
-                                <td>View Order</td>
-                            </tr>
-                            <tr>
-                                <td>Ladis Sunglass</td>
-                                <td>#894750374</td>
-                                <td><span class="shipment_dot">Shipment</span></td>
-                                <td>01976 74 92 00</td>
-                                <td>9241</td>
-                                <td>View Order</td>
-                            </tr>
-                            <tr>
-                                <td>Ladis Sunglass</td>
-                                <td>#894750374</td>
-                                <td><span class="pending_dot">Pending</span></td>
-                                <td>01976 74 92 00</td>
-                                <td>9241</td>
-                                <td>View Order</td>
-                            </tr>
-                            <tr>
-                                <td>Ladis Sunglass</td>
-                                <td>#894750374</td>
-                                <td><span class="confirmed _dot">Confirmed </span></td>
-                                <td>01976 74 92 00</td>
-                                <td>9241</td>
-                                <td>View Order</td>
-                            </tr>
-                            <tr>
-                                <td>Ladis Sunglass</td>
-                                <td>#894750374</td>
-                                <td><span class="pending_dot">Pending</span></td>
-                                <td>01976 74 92 00</td>
-                                <td>9241</td>
-                                <td>View Order</td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    <div class="pagination_area pull-right mt-5">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

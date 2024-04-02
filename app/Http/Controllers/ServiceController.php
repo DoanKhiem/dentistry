@@ -29,7 +29,18 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:services,code',
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        $data = $request->all();
+        $status = Service::create($data);
+        if ($status) {
+            return redirect()->route('service.index')->with('success', 'Thêm mới dịch vụ thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới dịch vụ');
+        }
     }
 
     /**
@@ -45,7 +56,8 @@ class ServiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        return view('service.edit', compact('item'));
     }
 
     /**
@@ -53,7 +65,23 @@ class ServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        if ($item) {
+            $this->validate($request, [
+                'code' => 'required|unique:services,code,' . $id,
+                'name' => 'required',
+                'price' => 'required',
+            ]);
+            $data = $request->all();
+            $status = $item->update($data);
+            if ($status) {
+                return redirect()->route('service.index')->with('success', 'Cập nhật dịch vụ thành công');
+            } else {
+                return back()->with('error', 'Lỗi cập nhật dịch vụ');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại dịch vụ này!');
+        }
     }
 
     /**
@@ -61,6 +89,16 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('service.index')->with('success', 'Xóa dịch vụ thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa dịch vụ!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại dịch vụ này!');
+        }
     }
 }

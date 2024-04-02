@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Thêm mới nhân viên</title>
+    <title>Thêm mới dịch vụ</title>
     @include('layouts.head')
 </head>
 
@@ -44,42 +44,30 @@
                             @endif
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="needs-validation" novalidate="" action="{{route('staff.store')}}" method="POST">
+                                    <form class="needs-validation" novalidate="" action="{{route('service.store')}}" method="POST">
                                         @csrf
-                                        <h4 class="header-title">Thông tin nhân viên</h4>
+                                        <h4 class="header-title">Thông tin dịch vụ</h4>
 
                                         <div class="form-group">
-                                            <label for="example-text-input" class="col-form-label">Mã nhân viên</label>
+                                            <label for="example-text-input" class="col-form-label">Mã dịch vụ</label>
                                             <input class="form-control" name="code" type="text" value="{{old('code')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-search-input" class="col-form-label">Tên nhân viên</label>
+                                            <label for="example-search-input" class="col-form-label">Tên dịch vụ</label>
                                             <input class="form-control" name="name" type="text" value="{{old('name')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email-input" class="col-form-label">Chức vụ</label>
-                                            <input class="form-control" name="position" type="text" value="{{old('position')}}" required="">
+                                            <label for="example-email-input" class="col-form-label">Giá tiền</label>
+                                            <input class="form-control" name="price" type="number" value="{{old('price')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="example-url-input" class="col-form-label">Số điện thoại</label>
-                                            <input class="form-control" name="phone" type="text" value="{{old('phone')}}" required="">
-                                            <div class="invalid-feedback">
-                                                Vui lòng nhập dữ liệu.
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="example-tel-input" class="col-form-label">Địa chỉ</label>
-                                            <input class="form-control" name="address" type="text" value="{{old('address')}}">
-
                                         </div>
                                         <button class="btn btn-primary" type="submit">Thêm mới</button>
                                     </form>

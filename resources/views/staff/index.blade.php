@@ -28,6 +28,7 @@
             <div class="row">
                 <!-- Dark table start -->
                 <div class="col-12 mt-5">
+                    @include('layouts.notification')
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
@@ -68,7 +69,7 @@
                                                 <form action="{{route('staff.destroy', $item->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-rounded btn-danger btn-xs mb-3" type="button"
+                                                    <button class="deleteBtn btn btn-rounded btn-danger btn-xs mb-3" type="button"
                                                             value="Reset"><i class="fa fa-trash"></i></button>
                                                 </form>
 

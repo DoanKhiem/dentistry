@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Thêm mới nhân viên</title>
+    <title>Thêm mới bác sĩ</title>
     @include('layouts.head')
 </head>
 
@@ -44,27 +44,27 @@
                             @endif
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="needs-validation" novalidate="" action="{{route('staff.store')}}" method="POST">
+                                    <form class="needs-validation" novalidate="" action="{{route('doctor.store')}}" method="POST">
                                         @csrf
-                                        <h4 class="header-title">Thông tin nhân viên</h4>
+                                        <h4 class="header-title">Thông tin bác sĩ</h4>
 
                                         <div class="form-group">
-                                            <label for="example-text-input" class="col-form-label">Mã nhân viên</label>
+                                            <label for="example-text-input" class="col-form-label">Mã bác sĩ</label>
                                             <input class="form-control" name="code" type="text" value="{{old('code')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-search-input" class="col-form-label">Tên nhân viên</label>
+                                            <label for="example-search-input" class="col-form-label">Tên bác sĩ</label>
                                             <input class="form-control" name="name" type="text" value="{{old('name')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email-input" class="col-form-label">Chức vụ</label>
-                                            <input class="form-control" name="position" type="text" value="{{old('position')}}" required="">
+                                            <label for="example-email-input" class="col-form-label">Chuyên môn</label>
+                                            <input class="form-control" name="specialize" type="text" value="{{old('specialize')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>

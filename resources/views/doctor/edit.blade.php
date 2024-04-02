@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Thêm mới nhân viên</title>
+    <title>Sửa bác sĩ</title>
     @include('layouts.head')
 </head>
 
@@ -44,44 +44,45 @@
                             @endif
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="needs-validation" novalidate="" action="{{route('staff.store')}}" method="POST">
+                                    <form class="needs-validation" novalidate="" action="{{route('doctor.update', $item->id)}}" method="POST">
                                         @csrf
-                                        <h4 class="header-title">Thông tin nhân viên</h4>
+                                        @method('PUT')
+                                        <h4 class="header-title">Thông tin bác sĩ</h4>
 
                                         <div class="form-group">
-                                            <label for="example-text-input" class="col-form-label">Mã nhân viên</label>
-                                            <input class="form-control" name="code" type="text" value="{{old('code')}}" required="">
+                                            <label for="example-text-input" class="col-form-label">Mã bác sĩ</label>
+                                            <input class="form-control" name="code" type="text" value="{{$item->code}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-search-input" class="col-form-label">Tên nhân viên</label>
-                                            <input class="form-control" name="name" type="text" value="{{old('name')}}" required="">
+                                            <label for="example-search-input" class="col-form-label">Tên bác sĩ</label>
+                                            <input class="form-control" name="name" type="text" value="{{$item->name}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email-input" class="col-form-label">Chức vụ</label>
-                                            <input class="form-control" name="position" type="text" value="{{old('position')}}" required="">
+                                            <label for="example-email-input" class="col-form-label">Chuyên môn</label>
+                                            <input class="form-control" name="specialize" type="text" value="{{$item->specialize}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-url-input" class="col-form-label">Số điện thoại</label>
-                                            <input class="form-control" name="phone" type="text" value="{{old('phone')}}" required="">
+                                            <input class="form-control" name="phone" type="text" value="{{$item->phone}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-tel-input" class="col-form-label">Địa chỉ</label>
-                                            <input class="form-control" name="address" type="text" value="{{old('address')}}">
+                                            <input class="form-control" name="address" type="text" value="{{$item->address}}">
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Thêm mới</button>
+                                        <button class="btn btn-primary" type="submit">Sửa</button>
                                     </form>
                                 </div>
                             </div>
