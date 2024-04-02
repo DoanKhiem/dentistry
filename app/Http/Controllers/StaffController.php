@@ -29,7 +29,19 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:staff,code',
+            'name' => 'required',
+            'position' => 'required',
+            'phone' => 'required|unique:staff,phone',
+        ]);
+        $data = $request->all();
+        $status = Staff::create($data);
+        if ($status) {
+            return redirect()->route('staff.index')->with('success', 'Thêm mới nhân viên thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới nhân viên');
+        }
     }
 
     /**
