@@ -56,7 +56,8 @@ class ServiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        return view('service.edit', compact('item'));
     }
 
     /**
@@ -64,7 +65,23 @@ class ServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Service::findOrFail($id);
+        if ($item) {
+            $this->validate($request, [
+                'code' => 'required|unique:services,code,' . $id,
+                'name' => 'required',
+                'price' => 'required',
+            ]);
+            $data = $request->all();
+            $status = $item->update($data);
+            if ($status) {
+                return redirect()->route('service.index')->with('success', 'Cập nhật dịch vụ thành công');
+            } else {
+                return back()->with('error', 'Lỗi cập nhật dịch vụ');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại dịch vụ này!');
+        }
     }
 
     /**

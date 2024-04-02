@@ -57,7 +57,8 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Staff::findOrFail($id);
+        return view('staff.edit', compact('item'));
     }
 
     /**
@@ -65,7 +66,24 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Staff::findOrFail($id);
+        if ($item) {
+            $this->validate($request, [
+                'code' => 'required|unique:staff,code,' . $id,
+                'name' => 'required',
+                'position' => 'required',
+                'phone' => 'required|unique:staff,phone,' . $id,
+            ]);
+            $data = $request->all();
+            $status = $item->update($data);
+            if ($status) {
+                return redirect()->route('staff.index')->with('success', 'Cập nhật nhân viên thành công');
+            } else {
+                return back()->with('error', 'Lỗi cập nhật nhân viên');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại nhân viên này!');
+        }
     }
 
     /**
