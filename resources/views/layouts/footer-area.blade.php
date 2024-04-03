@@ -1,5 +1,5 @@
 <footer>
     <div class="footer-area">
-        <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        <p>Website phòng khám nha khoa by <a href="#">Nguyễn Thu Diệu</a>.</p>
     </div>
 </footer>

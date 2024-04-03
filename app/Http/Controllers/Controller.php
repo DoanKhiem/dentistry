@@ -10,6 +10,7 @@ use App\Models\Staff;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -23,5 +24,33 @@ class Controller extends BaseController
         $appointments = Appointment::orderBy('created_at', 'desc')->get();
         $services = Service::orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('staffs', 'doctors', 'patients', 'appointments', 'services'));
+    }
+
+    public function booking()
+    {
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $services = Service::orderBy('created_at', 'desc')->get();
+        return view('booking', compact('doctors',  'services'));
+    }
+
+    public function bookingCreate(Request $request)
+    {
+        $patient = Patient::create([
+            'code' => 'BN-' . time(),
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone
+        ]);
+        $item = Service::findOrFail($request->service_id);
+        $appointment = Appointment::create([
+            'code' => 'VN-' . time(),
+            'patient_id' => $patient->id,
+            'doctor_id' => $request->doctor_id,
+            'service_id' => $request->service_id,
+            'time' => $request->time,
+            'price' => $item->price
+        ]);
+
+        dd($appointment);
     }
 }
