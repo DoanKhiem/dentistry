@@ -60,7 +60,8 @@ class PatientController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Patient::findOrFail($id);
+        return view('patient.edit', compact('item'));
     }
 
     /**
@@ -68,7 +69,23 @@ class PatientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Patient::findOrFail($id);
+        if ($item) {
+            $this->validate($request, [
+                'code' => 'required|unique:patients,code,' . $id,
+                'name' => 'required',
+                'phone' => 'required|unique:patients,phone,' . $id,
+            ]);
+            $data = $request->all();
+            $status = $item->update($data);
+            if ($status) {
+                return redirect()->route('patient.index')->with('success', 'Cập nhật bệnh nhân thành công');
+            } else {
+                return back()->with('error', 'Lỗi cập nhật bệnh nhân');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại bệnh nhân này!');
+        }
     }
 
     /**
