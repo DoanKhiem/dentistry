@@ -93,6 +93,16 @@ class PatientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Patient::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('patient.index')->with('success', 'Xóa bệnh nhân thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa bệnh nhân!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại bệnh nhân này!');
+        }
     }
 }

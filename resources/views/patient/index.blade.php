@@ -67,7 +67,7 @@
                                                 <form action="{{route('patient.destroy', $item->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-rounded btn-danger btn-xs mb-3" type="button"
+                                                    <button class="deleteBtn btn btn-rounded btn-danger btn-xs mb-3" type="button"
                                                             value="Reset"><i class="fa fa-trash"></i></button>
                                                 </form>
 
