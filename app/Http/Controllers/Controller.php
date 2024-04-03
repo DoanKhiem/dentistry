@@ -10,6 +10,7 @@ use App\Models\Staff;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -23,5 +24,10 @@ class Controller extends BaseController
         $appointments = Appointment::orderBy('created_at', 'desc')->get();
         $services = Service::orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('staffs', 'doctors', 'patients', 'appointments', 'services'));
+    }
+
+    public function booking(Request $request)
+    {
+        dd($request->all());
     }
 }

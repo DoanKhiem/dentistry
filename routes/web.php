@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/booking', function () {
+    return view('booking');
+})->name('booking');
+
+Route::post('/booking', [\App\Http\Controllers\Controller::class, 'booking'])->name('bookingPOST');
 
 Route::get('/dashboard', [\App\Http\Controllers\Controller::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -40,5 +46,7 @@ Route::middleware('auth')->group(function () {
     // service
     Route::resource('service', \App\Http\Controllers\ServiceController::class);
 });
+
+
 
 require __DIR__.'/auth.php';
