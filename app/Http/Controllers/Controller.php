@@ -26,8 +26,31 @@ class Controller extends BaseController
         return view('dashboard', compact('staffs', 'doctors', 'patients', 'appointments', 'services'));
     }
 
-    public function booking(Request $request)
+    public function booking()
     {
-        dd($request->all());
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $services = Service::orderBy('created_at', 'desc')->get();
+        return view('booking', compact('doctors',  'services'));
+    }
+
+    public function bookingCreate(Request $request)
+    {
+        $patient = Patient::create([
+            'code' => 'BN-' . time(),
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone
+        ]);
+        $item = Service::findOrFail($request->service_id);
+        $appointment = Appointment::create([
+            'code' => 'VN-' . time(),
+            'patient_id' => $patient->id,
+            'doctor_id' => $request->doctor_id,
+            'service_id' => $request->service_id,
+            'time' => $request->time,
+            'price' => $item->price
+        ]);
+
+        dd($appointment);
     }
 }

@@ -18,11 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/booking', function () {
-    return view('booking');
-})->name('booking');
+Route::get('/booking', [\App\Http\Controllers\Controller::class, 'booking'])->name('booking');
 
-Route::post('/booking', [\App\Http\Controllers\Controller::class, 'booking'])->name('bookingPOST');
+Route::post('/booking', [\App\Http\Controllers\Controller::class, 'bookingCreate'])->name('booking.create');
 
 Route::get('/dashboard', [\App\Http\Controllers\Controller::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 

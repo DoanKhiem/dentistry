@@ -142,7 +142,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Barista Cafe HTML CSS Template</title>
+    <title>Đặt lịch</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,7 +210,7 @@
                     <div class="booking-form-wrap">
                         <div class="row">
                             <div class="col-lg-7 col-12 p-0">
-                                <form class="custom-form booking-form" action="{{route('bookingPOST')}}" method="post" role="form">
+                                <form class="custom-form booking-form" action="{{route('booking.create')}}" method="post" role="form">
                                     @csrf
                                     <div class="text-center mb-4 pb-lg-2">
 {{--                                        <em class="text-white">Fill out the booking form</em>--}}
@@ -221,25 +221,35 @@
                                     <div class="booking-form-body">
                                         <div class="row">
                                             <div class="col-lg-6 col-12">
-                                                <input type="text" name="booking-form-name" id="booking-form-name" class="form-control" placeholder="Họ và Tên" required>
+                                                <input type="text" name="name" id="booking-form-name" class="form-control" placeholder="Họ và Tên" required>
                                             </div>
 
                                             <div class="col-lg-6 col-12">
-                                                <input type="tel" class="form-control" name="booking-form-phone" placeholder="Phone: 085 456 7890" required="">
+                                                <input type="tel" class="form-control" name="phone" placeholder="Phone: 085 456 7890" required="">
                                             </div>
-
                                             <div class="col-lg-6 col-12">
-                                                <input class="form-control" type="time" name="booking-form-time" value="18:30">
+                                                <select class="form-control" name="doctor_id" required="">
+                                                    <option value="">Chọn bác sĩ</option>
+                                                    @foreach($doctors as $doctor)
+                                                        <option value="{{$doctor->id}}">{{$doctor->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-
                                             <div class="col-lg-6 col-12">
-                                                <input type="date" name="booking-form-date" id="booking-form-date" class="form-control" placeholder="Date" required="">
+                                                <select class="form-control" name="service_id" required="">
+                                                    <option value="">Chọn dịch vụ</option>
+                                                    @foreach($services as $service)
+                                                        <option value="{{$service->id}}">{{$service->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
                                             <div class="col-lg-12 col-12">
-                                                <input type="number" name="booking-form-number" id="booking-form-number" class="form-control" placeholder="Number of People" required="">
+                                                <input type="date" name="time" class="form-control" placeholder="Ngày khám" required="">
+                                            </div>
 
-                                                <textarea name="booking-form-message" rows="3" class="form-control" id="booking-form-message" placeholder="Comment (Optional)"></textarea>
+                                            <div class="col-lg-12 col-12">
+                                                <textarea name="address" rows="3" class="form-control" id="booking-form-message" placeholder="Nhập địa chỉ"></textarea>
                                             </div>
 
                                             <div class="col-lg-4 col-md-10 col-8 mx-auto mt-2">

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('service_id')->constrained();
             $table->date('time');
-
+            $table->string('status')->default('request');
+            $table->decimal('price', 15, 2);
             $table->timestamps();
         });
     }
