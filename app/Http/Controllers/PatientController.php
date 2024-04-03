@@ -29,7 +29,22 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:patients,code',
+            'name' => 'required',
+            'phone' => 'required|unique:patients,phone',
+        ]);
+        $patient = Patient::create([
+            'code' => $request->code,
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone
+        ]);
+        if ($patient) {
+            return redirect()->route('patient.index')->with('success', 'Thêm mới bệnh nhân thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới bệnh nhân');
+        }
     }
 
     /**

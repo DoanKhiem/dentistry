@@ -198,9 +198,9 @@
                         <a class="nav-link click-scroll" href="#section_3">Dịch vụ</a>
                     </li>
 
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link click-scroll" href="#section_4">Reviews</a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_4">Tra lịch sử cuộc hẹn</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('booking')}}">Đặt lịch</a>

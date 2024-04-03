@@ -28,6 +28,7 @@
             <div class="row">
                 <!-- Dark table start -->
                 <div class="col-12 mt-5">
+                    @include('layouts.notification')
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
