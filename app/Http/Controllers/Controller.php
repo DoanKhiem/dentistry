@@ -35,12 +35,20 @@ class Controller extends BaseController
 
     public function bookingCreate(Request $request)
     {
-        $patient = Patient::create([
-            'code' => 'BN-' . time(),
-            'name' => $request->name,
-            'address' => $request->address,
-            'phone' => $request->phone
-        ]);
+        $patient = Patient::where('phone', $request->phone)->first();
+//        dd($patient);
+        if ($patient) { // nếu đã tồn tại khách hàng với sđt này
+            $data = $request->all();
+            $status = $patient->update($data);
+        } else {
+            $patient = Patient::create([
+                'code' => 'BN-' . time(),
+                'name' => $request->name,
+                'address' => $request->address,
+                'phone' => $request->phone
+            ]);
+        }
+
         $item = Service::findOrFail($request->service_id);
         $appointment = Appointment::create([
             'code' => 'VN-' . time(),
@@ -50,7 +58,7 @@ class Controller extends BaseController
             'time' => $request->time,
             'price' => $item->price
         ]);
+        return redirect()->route('home')->with('success', 'Đặt lịch thành công');
 
-        dd($appointment);
     }
 }
