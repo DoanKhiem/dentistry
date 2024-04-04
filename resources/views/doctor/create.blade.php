@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="example-url-input" class="col-form-label">Số điện thoại</label>
-                                            <input class="form-control" name="phone" type="text" value="{{old('phone')}}" required="">
+                                            <input class="form-control" name="phone" type="number" value="{{old('phone')}}" required="">
                                             <div class="invalid-feedback">
                                                 Vui lòng nhập dữ liệu.
                                             </div>

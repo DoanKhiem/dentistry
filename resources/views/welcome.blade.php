@@ -224,6 +224,11 @@
             <div class="row align-items-center">
 
                 <div class="col-lg-6 col-12 mx-auto">
+                    @if(session('success'))
+                        <p class="text-white mb-4 pb-lg-2">
+                            {{session('success')}} !
+                        </p>
+                    @else
                     <em class="small-text">Xin chào</em>
 
 {{--                    <h1>Thúy Đức</h1>--}}
@@ -231,7 +236,7 @@
                     <p class="text-white mb-4 pb-lg-2">
                         Bạn muốn khám nha khoa
                     </p>
-
+                    @endif
                     <a class="btn custom-btn custom-border-btn me-3" href="{{route('booking')}}">
                         Đặt lịch
                     </a>
