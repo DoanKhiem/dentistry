@@ -16,6 +16,13 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    public function home()
+    {
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $services = Service::orderBy('created_at', 'desc')->get();
+        return view('home', compact('doctors', 'services'));
+    }
+
     public function dashboard()
     {
         $staffs = Staff::orderBy('created_at', 'desc')->get();

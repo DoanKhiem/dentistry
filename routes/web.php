@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\Controller::class, 'home'])->name('home');
 
 Route::get('/booking', [\App\Http\Controllers\Controller::class, 'booking'])->name('booking');
 
