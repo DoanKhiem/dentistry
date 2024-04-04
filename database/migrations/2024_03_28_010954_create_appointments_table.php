@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained();
             $table->date('time');
             $table->string('status')->default('request');
-            $table->decimal('price', 15, 2);
+            $table->decimal('price', 15);
             $table->timestamps();
         });
     }
