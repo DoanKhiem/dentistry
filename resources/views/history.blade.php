@@ -187,15 +187,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_1">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">Bác sĩ</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Dịch vụ</a>
+                        <a class="nav-link click-scroll" href="{{route('home')}}">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -218,103 +210,53 @@
     </nav>
 
 
-    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-lg-6 col-12 mx-auto">
-                    @if(session('success'))
-                        <p class="text-white mb-4 pb-lg-2">
-                            {{session('success')}} !
-                        </p>
-                    @else
-                        <em class="small-text">Xin chào</em>
-
-                        {{--                    <h1>Thúy Đức</h1>--}}
-
-                        <p class="text-white mb-4 pb-lg-2">
-                            Bạn muốn khám nha khoa
-                        </p>
-                    @endif
-                    <a class="btn custom-btn custom-border-btn me-3" href="{{route('booking')}}">
-                        Đặt lịch
-                    </a>
-
-                    <a class="btn custom-btn smoothscroll me-2 mb-2" href="#section_3"><strong>Xem dịch vụ</strong></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="hero-slides"></div>
-    </section>
-
-    <section class="barista-section section-padding section-bg" id="section_2">
+    <section class="reviews-section section-padding section-bg" style="padding-top: 200px" id="section_4">
         <div class="container">
             <div class="row justify-content-center">
-
-                <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
-{{--                    <em class="text-white">Creative Baristas</em>--}}
-
-                    <h2 class="text-white">Bác Sĩ</h2>
-                </div>
-
-                @foreach($doctors as $doctor)
-                <div class="col-lg-3 col-md-6 col-12 mb-4">
-                    <div class="team-block-wrap">
-                        <div class="team-block-info d-flex flex-column">
-                            <div class="d-flex mt-auto mb-3">
-                                <h4 class="text-white mb-0">{{$doctor->name}}</h4>
-
-                                <p class="badge ms-4"><em>{{$doctor->specialize}}</em></p>
-                            </div>
-
-                            <p class="text-white mb-0">{{$doctor->phone}}</p>
-                        </div>
-
-                        <div class="team-block-image-wrap">
-                            <img src="{{asset('user/images/team/doctor.png')}}" class="team-block-image img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </div>
-    </section>
-
-
-    <section class="menu-section section-padding" id="section_3">
-        <div class="container">
-            <div class="row">
-
                 <div class="col-lg-12 col-12 mb-4 mb-lg-0">
-                    <div class="menu-block-wrap">
-                        <div class="text-center mb-4 pb-lg-2">
-{{--                            <em class="text-white">Dịch vụ của chúng tôi</em>--}}
-                            <h4 class="text-white">Dịch vụ của chúng tôi</h4>
-                        </div>
-                        @foreach($services as $service)
-                        <div class="menu-block">
-                            <div class="d-flex">
-                                <h6>{{$service->name}}</h6>
-
-                                <span class="underline"></span>
-
-                                <strong class="ms-auto">{{$service->price}}đ</strong>
+                        <div class="menu-block-wrap">
+                            <div class="text-center mb-4 pb-lg-2">
+                                {{--                            <em class="text-white">Dịch vụ của chúng tôi</em>--}}
+                                <h4 class="text-white">Tra cứu lịch sử cuộc hẹn</h4>
                             </div>
+                            <form action="#" method="get" class="custom-form contact-form mb-5" role="form">
 
-{{--                            <div class="border-top mt-2 pt-2">--}}
-{{--                                <small>Fresh brewed coffee and steamed milk</small>--}}
-{{--                            </div>--}}
-                        </div>
+                                <div class="row ">
+                                    <div class="col-lg-8 col-12 " >
+
+                                        <input style="margin-bottom: 0" type="number" name="phone" id="name" class="form-control" placeholder="Nhập số điện thoại của bạn" required="">
+                                    </div>
+                                    <div class="col-lg-4 col-12 mx-auto">
+                                        <button type="submit" class="form-control">Tra cứu</button>
+                                    </div>
+                                </div>
+                            </form>
+                            @foreach($appointments as $appointment)
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>{{$appointment->code}}</h6>
+                                        <h6>{{$appointment->time}}</h6>
+
+                                        <span class="underline"></span>
+
+                                        <strong class="ms-auto">{{$appointment->price}}đ</strong>
+                                    </div>
+
+                                    {{--                            <div class="border-top mt-2 pt-2">--}}
+                                    {{--                                <small>Fresh brewed coffee and steamed milk</small>--}}
+                                    {{--                            </div>--}}
+                                </div>
                             @endforeach
+                            @if($appointments == [])
+                                <div class="menu-block">
+                                    <div class="d-flex">
+                                        <h6>Không tìm thấy lịch sử cuộc hẹn</h6>
+                                    </div>
+                                </div>
+                            @endif
 
+                        </div>
                     </div>
-                </div>
-
-
             </div>
         </div>
     </section>

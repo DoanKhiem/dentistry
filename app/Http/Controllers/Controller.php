@@ -23,6 +23,22 @@ class Controller extends BaseController
         return view('home', compact('doctors', 'services'));
     }
 
+    public function history(Request $request)
+    {
+        if ($request->filled('phone')) {
+
+            $patient = Patient::where('phone', $request->phone)->first();
+            if ($patient) {
+                $appointments = Appointment::where('patient_id', $patient->id)->orderBy('created_at', 'desc')->get();
+            } else {
+                $appointments = [];
+            }
+        } else {
+            $appointments = [];
+        }
+        return view('history', compact('appointments'));
+    }
+
     public function dashboard()
     {
         $staffs = Staff::orderBy('created_at', 'desc')->get();
