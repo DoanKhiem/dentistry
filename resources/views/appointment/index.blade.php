@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div style="display: flex; align-items: center;  justify-content: space-between;">
                                 <h4 class="header-title">Danh sách cuộc hẹn</h4>
-                                <a href="{{route('doctor.create')}}">
+                                <a href="{{route('appointment.create')}}">
                                     <button style="font-size: 16px" type="button" class="btn btn-primary btn-sm mb-3">
                                         <i style="margin-right: 10px" class="fa fa-plus"></i>Thêm mới</button>
                                 </a>
@@ -45,7 +45,7 @@
                                         <th>Bệnh nhân</th>
                                         <th>Bác sĩ</th>
                                         <th>Ngày giờ</th>
-                                        <th>Trạng thái</th>
+{{--                                        <th>Trạng thái</th>--}}
                                         <th>Mã hóa đơn</th>
                                         <th>Tổng hóa đơn</th>
                                         <th>Tình trạng hóa đơn</th>
@@ -57,13 +57,13 @@
                                     @foreach($datas as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->patient->name }}</td>
+                                            <td>{{ $item->doctor->name }}</td>
+                                            <td>{{ $item->time }}</td>
+{{--                                            <td>{{ $item->status }}</td>--}}
                                             <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
-                                            <td>{{ $item->code }}</td>
+                                            <td>{{ $item->price }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>
                                                 <a href="{{route('appointment.edit', $item->id)}}">
                                                     <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"

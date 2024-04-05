@@ -17,9 +17,10 @@ return new class extends Migration
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('doctor_id')->constrained();
             $table->foreignId('service_id')->constrained();
-            $table->date('time');
-            $table->string('status')->default('request');
+            $table->dateTime('time');
+            $table->integer('status')->default(1);
             $table->decimal('price', 15);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

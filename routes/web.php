@@ -43,6 +43,12 @@ Route::middleware('auth')->group(function () {
 
     // service
     Route::resource('service', \App\Http\Controllers\ServiceController::class);
+
+    Route::get('/reset-password', function (
+    ) {
+        return view('reset-password');
+    })->name('change.pass');
+
 });
 
 

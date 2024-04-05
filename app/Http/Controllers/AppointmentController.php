@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Doctor;
+use App\Models\Patient;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -21,7 +24,10 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('appointment.create');
+        $patients = Patient::orderBy('created_at', 'desc')->get();
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $services = Service::orderBy('created_at', 'desc')->get();
+        return view('appointment.create', compact('doctors', 'services', 'patients'));
     }
 
     /**
@@ -29,7 +35,22 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required|unique:appointments,code',
+            'patient_id' => 'required',
+            'doctor_id' => 'required',
+            'service_id' => 'required',
+            'time' => 'required',
+        ]);
+        $item = Service::findOrFail($request->service_id);
+        $request->merge(['price' => $item->price]);
+        $data = $request->all();
+        $status = Appointment::create($data);
+        if ($status) {
+            return redirect()->route('appointment.index')->with('success', 'Thêm mới cuộc hẹn thành công');
+        } else {
+            return back()->with('error', 'Lỗi thêm mới cuộc hẹn');
+        }
     }
 
     /**
@@ -45,7 +66,11 @@ class AppointmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $patients = Patient::orderBy('created_at', 'desc')->get();
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $services = Service::orderBy('created_at', 'desc')->get();
+        $item = Appointment::findOrFail($id);
+        return view('appointment.edit', compact('item', 'patients', 'doctors', 'services'));
     }
 
     /**
@@ -53,7 +78,24 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Appointment::findOrFail($id);
+        $this->validate($request, [
+            'code' => 'required|unique:appointments,code,' . $id,
+            'patient_id' => 'required',
+            'doctor_id' => 'required',
+            'service_id' => 'required',
+            'time' => 'required',
+            'status' => 'required',
+        ]);
+        $service = Service::findOrFail($request->service_id);
+        $request->merge(['price' => $service->price]);
+        $data = $request->all();
+        $status = $item->update($data);
+        if ($status) {
+            return redirect()->route('appointment.index')->with('success', 'Sửa cuộc hẹn thành công');
+        } else {
+            return back()->with('error', 'Lỗi sửa cuộc hẹn');
+        }
     }
 
     /**
@@ -61,6 +103,16 @@ class AppointmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Appointment::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('appointment.index')->with('success', 'Xóa cuộc hẹn thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa cuộc hẹn!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại cuộc hẹn này!');
+        }
     }
 }

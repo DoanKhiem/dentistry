@@ -47,6 +47,7 @@
         <div class="main-content-inner">
             <!-- sales report area start -->
             <div class="sales-report-area sales-style-two">
+                @include('layouts.notification')
                 <div class="row">
                     <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
                         <div class="single-report">
@@ -80,7 +81,7 @@
                         <div class="single-report">
                             <div class="s-sale-inner pt--30 mb-3">
                                 <div class="s-report-title d-flex justify-content-between">
-                                    <h4 class="header-title mb-0">Cuộc hẹn hôm nay</h4>
+                                    <h4 class="header-title mb-0">Cuộc hẹn</h4>
 {{--                                    <select class="custome-select border-0 pr-3">--}}
 {{--                                        <option selected="">Last 7 Days</option>--}}
 {{--                                        <option value="0">Last 7 Days</option>--}}
@@ -94,14 +95,14 @@
                         <div class="single-report">
                             <div class="s-sale-inner pt--30 mb-3">
                                 <div class="s-report-title d-flex justify-content-between">
-                                    <h4 class="header-title mb-0">Doanh thu tháng này</h4>
+                                    <h4 class="header-title mb-0">Doanh thu</h4>
 {{--                                    <select class="custome-select border-0 pr-3">--}}
 {{--                                        <option selected="">Last 7 Days</option>--}}
 {{--                                        <option value="0">Last 7 Days</option>--}}
 {{--                                    </select>--}}
                                 </div>
                             </div>
-                            <div id="coin_sales7" style="font-size: 40px">100000</div>
+                            <div id="coin_sales7" style="font-size: 40px">{{ $appointments->sum('price') }}</div>
                         </div>
                     </div>
                 </div>
@@ -112,11 +113,39 @@
                 <div class="card-body">
                     <h4 class="header-title">Danh sách lịch hẹn gần đây</h4>
                     <div class="table-responsive">
-                        <table class="dbkit-table">
+                        <table class="dbkit-table text-center">
+
                             <tbody>
+                            <tr class="heading-td">
+                                <td>STT</td>
+                                <td>Tên bệnh nhân</td>
+                                <td>Tên bác sĩ</td>
+                                <td>Dịch vụ</td>
+                                <td>Ngày giờ</td>
+                                <td>Ghi chú</td>
+                                <td>Hành dộng</td>
+                            </tr>
                             @foreach($appointments->take(5) as $appointment)
                             <tr class="heading-td">
-                                <td>{{$appointment->name}}</td>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{$appointment->patient->name}}</td>
+                                <td>{{$appointment->doctor->name}}</td>
+                                <td>{{$appointment->service->name}}</td>
+                                <td>{{$appointment->time}}</td>
+                                <td>{{$appointment->note}}</td>
+                                <td>
+                                    <a href="{{route('appointment.edit', $appointment->id)}}">
+                                        <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"
+                                                value="Input"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <form action="{{route('appointment.destroy', $appointment->id)}}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="deleteBtn btn btn-rounded btn-danger btn-xs mb-3" type="button"
+                                                value="Reset"><i class="fa fa-trash"></i></button>
+                                    </form>
+
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
