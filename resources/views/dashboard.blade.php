@@ -80,7 +80,7 @@
                         <div class="single-report">
                             <div class="s-sale-inner pt--30 mb-3">
                                 <div class="s-report-title d-flex justify-content-between">
-                                    <h4 class="header-title mb-0">Cuộc hẹn hôm nay</h4>
+                                    <h4 class="header-title mb-0">Cuộc hẹn</h4>
 {{--                                    <select class="custome-select border-0 pr-3">--}}
 {{--                                        <option selected="">Last 7 Days</option>--}}
 {{--                                        <option value="0">Last 7 Days</option>--}}
@@ -94,14 +94,14 @@
                         <div class="single-report">
                             <div class="s-sale-inner pt--30 mb-3">
                                 <div class="s-report-title d-flex justify-content-between">
-                                    <h4 class="header-title mb-0">Doanh thu tháng này</h4>
+                                    <h4 class="header-title mb-0">Doanh thu</h4>
 {{--                                    <select class="custome-select border-0 pr-3">--}}
 {{--                                        <option selected="">Last 7 Days</option>--}}
 {{--                                        <option value="0">Last 7 Days</option>--}}
 {{--                                    </select>--}}
                                 </div>
                             </div>
-                            <div id="coin_sales7" style="font-size: 40px">100000</div>
+                            <div id="coin_sales7" style="font-size: 40px">{{ $appointments->sum('price') }}</div>
                         </div>
                     </div>
                 </div>

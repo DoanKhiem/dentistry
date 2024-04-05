@@ -78,7 +78,7 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = Doctor::findOrFail($id);
+        $item = Appointment::findOrFail($id);
         $this->validate($request, [
             'code' => 'required|unique:appointments,code,' . $id,
             'patient_id' => 'required',
@@ -103,6 +103,16 @@ class AppointmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Appointment::findOrFail($id);
+        if ($item) {
+            $status = $item->delete();
+            if ($status) {
+                return redirect()->route('appointment.index')->with('success', 'Xóa cuộc hẹn thành công!');
+            } else {
+                return back()->with('error', 'Lỗi xóa cuộc hẹn!');
+            }
+        } else {
+            return back()->with('error', 'Không tồn tại cuộc hẹn này!');
+        }
     }
 }
