@@ -112,11 +112,39 @@
                 <div class="card-body">
                     <h4 class="header-title">Danh sách lịch hẹn gần đây</h4>
                     <div class="table-responsive">
-                        <table class="dbkit-table">
+                        <table class="dbkit-table text-center">
+
                             <tbody>
+                            <tr class="heading-td">
+                                <td>STT</td>
+                                <td>Tên bệnh nhân</td>
+                                <td>Tên bác sĩ</td>
+                                <td>Dịch vụ</td>
+                                <td>Ngày giờ</td>
+                                <td>Ghi chú</td>
+                                <td>Hành dộng</td>
+                            </tr>
                             @foreach($appointments->take(5) as $appointment)
                             <tr class="heading-td">
-                                <td>{{$appointment->name}}</td>
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{$appointment->patient->name}}</td>
+                                <td>{{$appointment->doctor->name}}</td>
+                                <td>{{$appointment->service->name}}</td>
+                                <td>{{$appointment->time}}</td>
+                                <td>{{$appointment->note}}</td>
+                                <td>
+                                    <a href="{{route('appointment.edit', $appointment->id)}}">
+                                        <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"
+                                                value="Input"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <form action="{{route('appointment.destroy', $appointment->id)}}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="deleteBtn btn btn-rounded btn-danger btn-xs mb-3" type="button"
+                                                value="Reset"><i class="fa fa-trash"></i></button>
+                                    </form>
+
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
