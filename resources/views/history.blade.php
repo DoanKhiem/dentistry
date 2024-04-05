@@ -176,8 +176,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="{{asset('user/images/coffee-beans.png')}}" class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
-                Barista
+                <img src="https://nhakhoathuyduc.com.vn/wp-content/uploads/2023/11/logo.svg" style="width: 100px" class="navbar-brand-image img-fluid" alt="nhakhoathuyduc">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -267,11 +266,16 @@
             <div class="row">
 
                 <div class="col-lg-4 col-12 me-auto">
-                    <em class="text-white d-block mb-4">Where to find us?</em>
+                    <em class="text-white d-block mb-4">Địa chỉ của chúng tôi?</em>
 
                     <strong class="text-white">
                         <i class="bi-geo-alt me-2"></i>
-                        Bandra West, Mumbai, Maharashtra 400050, India
+                        CS1: Số 64 Phố Vọng, Phương Mai, Đống Đa, Hà Nội
+                    </strong>
+                    <br>
+                    <strong class="text-white">
+                        <i class="bi-geo-alt me-2"></i>
+                        CS2: tầng 3, 4 tòa GP Building 257 Giải Phóng, Đống Đa, Hà Nội
                     </strong>
 
                     <ul class="social-icon mt-4">
@@ -293,56 +297,42 @@
                 </div>
 
                 <div class="col-lg-3 col-12 mt-4 mb-3 mt-lg-0 mb-lg-0">
-                    <em class="text-white d-block mb-4">Contact</em>
+                    <em class="text-white d-block mb-4">Liên hệ</em>
 
                     <p class="d-flex mb-1">
-                        <strong class="me-2">Phone:</strong>
-                        <a href="tel: 305-240-9671" class="site-footer-link">
-                            (65)
-                            305 2409 671
+                        <strong class="me-2">SĐT:</strong>
+                        <a href="tel: 0931863366" class="site-footer-link">
+                            0931863366
                         </a>
                     </p>
 
-                    <p class="d-flex">
-                        <strong class="me-2">Email:</strong>
+                    {{--                    <p class="d-flex">--}}
+                    {{--                        <strong class="me-2">Email:</strong>--}}
 
-                        <a href="mailto:info@yourgmail.com" class="site-footer-link">
-                            hello@barista.co
-                        </a>
-                    </p>
+                    {{--                        <a href="mailto:info@yourgmail.com" class="site-footer-link">--}}
+                    {{--                            hello@barista.co--}}
+                    {{--                        </a>--}}
+                    {{--                    </p>--}}
                 </div>
 
 
                 <div class="col-lg-5 col-12">
-                    <em class="text-white d-block mb-4">Opening Hours.</em>
+                    <em class="text-white d-block mb-4">Giờ hoạt động.</em>
 
                     <ul class="opening-hours-list">
                         <li class="d-flex">
-                            Monday - Friday
+                            Thứ 2 - Chủ Nhật
                             <span class="underline"></span>
 
-                            <strong>9:00 - 18:00</strong>
+                            <strong>8:30 -18:30</strong>
                         </li>
 
-                        <li class="d-flex">
-                            Saturday
-                            <span class="underline"></span>
 
-                            <strong>11:00 - 16:30</strong>
-                        </li>
-
-                        <li class="d-flex">
-                            Sunday
-                            <span class="underline"></span>
-
-                            <strong>Closed</strong>
-                        </li>
                     </ul>
                 </div>
 
                 <div class="col-lg-8 col-12 mt-4">
-                    <p class="copyright-text mb-0">Copyright © Barista Cafe 2048
-                        - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                    <p class="copyright-text mb-0">Copyright © Nguyễn Thu Diệu</p>
                 </div>
             </div>
         </div>
