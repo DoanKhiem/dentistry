@@ -47,6 +47,7 @@
         <div class="main-content-inner">
             <!-- sales report area start -->
             <div class="sales-report-area sales-style-two">
+                @include('layouts.notification')
                 <div class="row">
                     <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
                         <div class="single-report">
