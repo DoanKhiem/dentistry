@@ -93,6 +93,21 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="example-email-input" class="col-form-label mr-5">Tình trạng hóa đơn</label>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" value="1" {{$item->status == 1 ? 'checked' : ''}} id="customRadio4" name="status" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio4">Chưa thanh toán</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" value="2"  {{$item->status == 2 ? 'checked' : ''}} id="customRadio5" name="status" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio5">Đã thanh toán</label>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Vui lòng nhập dữ liệu.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="example-url-input" class="col-form-label">Ngày giờ</label>
                                             <input class="form-control" name="time" type="datetime-local" value="{{$item->time}}" id="example-datetime-local-input">
                                             <div class="invalid-feedback">

@@ -1,7 +1,7 @@
 <div class="sidebar-menu">
     <div class="sidebar-header">
         <div class="logo">
-            <a href="{{route('dashboard')}}"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+            <a href="{{route('dashboard')}}"><img src="https://nhakhoathuyduc.com.vn/wp-content/uploads/2023/11/logo.svg" alt="logo"></a>
         </div>
     </div>
     <div class="main-menu">
@@ -26,8 +26,8 @@
                     <li class="{{ Str::startsWith(Route::currentRouteName(), ['service']) ? 'active' : '' }}">
                         <a href="{{route('service.index')}}" aria-expanded="true"><i class="fa fa-heartbeat"></i><span>Dịch vụ</span></a>
                     </li>
-                    <li class="{{ Str::startsWith(Route::currentRouteName(), ['dddd']) ? 'active' : '' }}">
-                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-bar-chart"></i><span>Báo cáo, thống kê</span></a>
+                    <li class="{{ Str::startsWith(Route::currentRouteName(), ['statistical']) ? 'active' : '' }}">
+                        <a href="{{route('statistical')}}" aria-expanded="true"><i class="fa fa-bar-chart"></i><span>Báo cáo, thống kê</span></a>
                     </li>
                 </ul>
             </nav>

@@ -49,6 +49,13 @@ Route::middleware('auth')->group(function () {
         return view('reset-password');
     })->name('change.pass');
 
+    Route::get('/statistical', [\App\Http\Controllers\Controller::class, 'statistical'])->name('statistical');
+
+    Route::get('edit-profile', [\App\Http\Controllers\Controller::class, 'editProfile'])->name('edit.profile');
+
+    Route::put('update-profile', [\App\Http\Controllers\Controller::class, 'updateProfile'])->name('profile.store');
+
+
 });
 
 

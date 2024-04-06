@@ -24,12 +24,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - ICO Dashboard</title>
+    <title>Dashboard</title>
     @include('layouts.head')
 </head>
 
 <body>
 <!-- preloader area start -->
+
 <div id="preloader">
     <div class="loader"></div>
 </div>

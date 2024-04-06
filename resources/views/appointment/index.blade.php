@@ -63,7 +63,13 @@
 {{--                                            <td>{{ $item->status }}</td>--}}
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->price }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            <td>
+                                                @if($item->status == 1)
+                                                    <span class="badge badge-secondary" style="font-size: initial;">Chưa thanh toán</span>
+                                                @else
+                                                    <span class="badge badge-success" style="font-size: initial;">Đã thanh toán</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{{route('appointment.edit', $item->id)}}">
                                                     <button class="btn btn-rounded btn-warning btn-xs mb-3" type="button"
