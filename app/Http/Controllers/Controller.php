@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Service;
 use App\Models\Staff;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -83,5 +84,18 @@ class Controller extends BaseController
         ]);
         return redirect()->route('home')->with('success', 'Đặt lịch thành công');
 
+    }
+    public function statistical()
+    {
+        // Lấy ngày đầu tiên và cuối cùng của tháng hiện tại
+        $firstDayofMonth = Carbon::now()->startOfMonth();
+        $lastDayofMonth = Carbon::now()->endOfMonth();
+
+        $totalAppointment = Appointment::whereBetween('time', [$firstDayofMonth, $lastDayofMonth])->count();
+
+        $totalAppointmentPrice = Appointment::whereBetween('time', [$firstDayofMonth, $lastDayofMonth])->where('status', 2)->sum('price');
+
+        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        return view('statistical', compact('totalAppointment', 'totalAppointmentPrice', 'doctors'));
     }
 }

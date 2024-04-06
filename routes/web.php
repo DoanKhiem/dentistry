@@ -49,6 +49,10 @@ Route::middleware('auth')->group(function () {
         return view('reset-password');
     })->name('change.pass');
 
+    Route::get('/statistical', [\App\Http\Controllers\Controller::class, 'statistical'])->name('statistical');
+
+
+
 });
 
 

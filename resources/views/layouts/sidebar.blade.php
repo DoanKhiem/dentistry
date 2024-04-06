@@ -27,7 +27,7 @@
                         <a href="{{route('service.index')}}" aria-expanded="true"><i class="fa fa-heartbeat"></i><span>Dịch vụ</span></a>
                     </li>
                     <li class="{{ Str::startsWith(Route::currentRouteName(), ['dddd']) ? 'active' : '' }}">
-                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-bar-chart"></i><span>Báo cáo, thống kê</span></a>
+                        <a href="{{route('statistical')}}" aria-expanded="true"><i class="fa fa-bar-chart"></i><span>Báo cáo, thống kê</span></a>
                     </li>
                 </ul>
             </nav>
