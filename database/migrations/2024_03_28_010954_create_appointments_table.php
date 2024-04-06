@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained();
             $table->dateTime('time');
             $table->integer('status')->default(1);
-            $table->decimal('price', 15);
+            $table->decimal('price', 15, 0);
             $table->text('note')->nullable();
             $table->timestamps();
         });

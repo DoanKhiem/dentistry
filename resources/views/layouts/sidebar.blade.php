@@ -1,7 +1,7 @@
 <div class="sidebar-menu">
     <div class="sidebar-header">
         <div class="logo">
-            <a href="{{route('dashboard')}}"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+            <a href="{{route('dashboard')}}"><img src="https://nhakhoathuyduc.com.vn/wp-content/uploads/2023/11/logo.svg" alt="logo"></a>
         </div>
     </div>
     <div class="main-menu">
