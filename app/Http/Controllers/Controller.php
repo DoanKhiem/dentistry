@@ -7,11 +7,13 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Service;
 use App\Models\Staff;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
@@ -97,5 +99,24 @@ class Controller extends BaseController
 
         $doctors = Doctor::orderBy('created_at', 'desc')->get();
         return view('statistical', compact('totalAppointment', 'totalAppointmentPrice', 'doctors'));
+    }
+
+
+    public function editProfile()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        return view('edit-profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        $data = $request->all();
+        $status = $user->update($data);
+        if ($status) {
+            return redirect()->route('edit.profile')->with('success', 'Cập nhật thông tin thành công');
+        } else {
+            return redirect()->route('edit.profile')->with('error', 'Cập nhật thông tin thất bại');
+        }
     }
 }

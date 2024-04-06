@@ -26,7 +26,7 @@
                     <li class="{{ Str::startsWith(Route::currentRouteName(), ['service']) ? 'active' : '' }}">
                         <a href="{{route('service.index')}}" aria-expanded="true"><i class="fa fa-heartbeat"></i><span>Dịch vụ</span></a>
                     </li>
-                    <li class="{{ Str::startsWith(Route::currentRouteName(), ['dddd']) ? 'active' : '' }}">
+                    <li class="{{ Str::startsWith(Route::currentRouteName(), ['statistical']) ? 'active' : '' }}">
                         <a href="{{route('statistical')}}" aria-expanded="true"><i class="fa fa-bar-chart"></i><span>Báo cáo, thống kê</span></a>
                     </li>
                 </ul>

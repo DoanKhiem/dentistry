@@ -12,7 +12,7 @@
                 <img class="avatar user-thumb" src="{{asset('assets/images/author/avatar.png')}}" alt="avatar">
                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></h4>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Edit profile</a>
+                    <a class="dropdown-item" href="{{route('edit.profile')}}">Edit profile</a>
                     <a class="dropdown-item" href="{{route('change.pass')}}">Change password</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
