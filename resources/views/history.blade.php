@@ -142,7 +142,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Barista Cafe HTML CSS Template</title>
+    <title>Nha khoa Thuy Duc</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -261,7 +261,7 @@
     </section>
 
 
-    <footer class="site-footer">
+    <footer class="site-footer" style="background-color: #0F4FAF">
         <div class="container">
             <div class="row">
 
@@ -331,9 +331,9 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-8 col-12 mt-4">
-                    <p class="copyright-text mb-0">Copyright © Nguyễn Thu Diệu</p>
-                </div>
+{{--                <div class="col-lg-8 col-12 mt-4">--}}
+{{--                    <p class="copyright-text mb-0">Copyright © Nguyễn Thu Diệu</p>--}}
+{{--                </div>--}}
             </div>
         </div>
     </footer>
