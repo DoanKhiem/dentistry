@@ -244,7 +244,7 @@
                                             </div>
 
                                             <div class="col-lg-12 col-12">
-                                                <input type="date" name="time" class="form-control" placeholder="Ngày khám" required="">
+                                                <input type="datetime-local" name="time" class="form-control" placeholder="Ngày khám" required="">
                                             </div>
 
                                             <div class="col-lg-12 col-12">
@@ -274,7 +274,7 @@
         </div>
     </section>
 
-    <footer class="site-footer">
+    <footer class="site-footer" style="background-color: #0F4FAF">
         <div class="container">
             <div class="row">
 
@@ -344,9 +344,9 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-8 col-12 mt-4">
-                    <p class="copyright-text mb-0">Copyright © Nguyễn Thu Diệu</p>
-                </div>
+{{--                <div class="col-lg-8 col-12 mt-4">--}}
+{{--                    <p class="copyright-text mb-0">Copyright © Nguyễn Thu Diệu</p>--}}
+{{--                </div>--}}
             </div>
         </div>
     </footer>
