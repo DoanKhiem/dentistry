@@ -207,7 +207,7 @@
                 </ul>
 
                 <div class="ms-lg-3">
-                    <a class="btn custom-btn custom-border-btn" href="{{ route('login') }}">
+                    <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
                         Quản lý đăng nhập
                         <i class="bi-arrow-up-right ms-2"></i>
                     </a>
