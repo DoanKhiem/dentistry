@@ -18,8 +18,12 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create()
     {
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.register');
     }
 
