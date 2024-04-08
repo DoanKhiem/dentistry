@@ -11,25 +11,26 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests;
+    use ValidatesRequests;
 
     public function home()
     {
         $doctors = Doctor::orderBy('created_at', 'desc')->get();
         $services = Service::orderBy('created_at', 'desc')->get();
+
         return view('home', compact('doctors', 'services'));
     }
 
     public function history(Request $request)
     {
         if ($request->filled('phone')) {
-
             $patient = Patient::where('phone', $request->phone)->first();
             if ($patient) {
                 $appointments = Appointment::where('patient_id', $patient->id)->orderBy('created_at', 'desc')->get();
@@ -39,6 +40,7 @@ class Controller extends BaseController
         } else {
             $appointments = [];
         }
+
         return view('history', compact('appointments'));
     }
 
@@ -49,6 +51,7 @@ class Controller extends BaseController
         $patients = Patient::orderBy('created_at', 'desc')->get();
         $appointments = Appointment::orderBy('created_at', 'desc')->get();
         $services = Service::orderBy('created_at', 'desc')->get();
+
         return view('dashboard', compact('staffs', 'doctors', 'patients', 'appointments', 'services'));
     }
 
@@ -56,7 +59,8 @@ class Controller extends BaseController
     {
         $doctors = Doctor::orderBy('created_at', 'desc')->get();
         $services = Service::orderBy('created_at', 'desc')->get();
-        return view('booking', compact('doctors',  'services'));
+
+        return view('booking', compact('doctors', 'services'));
     }
 
     public function bookingCreate(Request $request)
@@ -68,25 +72,26 @@ class Controller extends BaseController
             $status = $patient->update($data);
         } else {
             $patient = Patient::create([
-                'code' => 'BN-' . time(),
+                'code' => 'BN-'.time(),
                 'name' => $request->name,
                 'address' => $request->address,
-                'phone' => $request->phone
+                'phone' => $request->phone,
             ]);
         }
 
         $item = Service::findOrFail($request->service_id);
         $appointment = Appointment::create([
-            'code' => 'VN-' . time(),
+            'code' => 'VN-'.time(),
             'patient_id' => $patient->id,
             'doctor_id' => $request->doctor_id,
             'service_id' => $request->service_id,
             'time' => $request->time,
-            'price' => $item->price
+            'price' => $item->price,
         ]);
-        return redirect()->route('home')->with('success', 'Đặt lịch thành công');
 
+        return redirect()->route('home')->with('success', 'Đặt lịch thành công');
     }
+
     public function statistical()
     {
         // Lấy ngày đầu tiên và cuối cùng của tháng hiện tại
@@ -98,19 +103,20 @@ class Controller extends BaseController
         $totalAppointmentPrice = Appointment::whereBetween('time', [$firstDayofMonth, $lastDayofMonth])->where('status', 2)->sum('price');
 
         $doctors = Doctor::orderBy('created_at', 'desc')->get();
+
         return view('statistical', compact('totalAppointment', 'totalAppointmentPrice', 'doctors'));
     }
 
-
     public function editProfile()
     {
-        $user = User::findOrFail(Auth::user()->id);
+        $user = User::findOrFail(Auth::guard('admin')->user()->id);
+
         return view('edit-profile', compact('user'));
     }
 
     public function updateProfile(Request $request)
     {
-        $user = User::findOrFail(Auth::user()->id);
+        $user = User::findOrFail(Auth::guard('admin')->user()->id);
         $data = $request->all();
         $status = $user->update($data);
         if ($status) {
