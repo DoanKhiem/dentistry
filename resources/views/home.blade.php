@@ -207,10 +207,17 @@
                 </ul>
 
                 <div class="ms-lg-3">
+                    @if(Auth::guard('user')->check())
+                        <a class="btn custom-btn custom-border-btn" href="{{ route('user.logout') }}">
+                            Đăng xuất
+                            <i class="bi-arrow-up-right ms-2"></i>
+                        </a>
+                    @else
                     <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
-                        Quản lý đăng nhập
+                        Đăng nhập
                         <i class="bi-arrow-up-right ms-2"></i>
                     </a>
+                    @endif
                 </div>
             </div>
         </div>

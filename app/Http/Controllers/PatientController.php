@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
@@ -38,7 +39,8 @@ class PatientController extends Controller
             'code' => $request->code,
             'name' => $request->name,
             'address' => $request->address,
-            'phone' => $request->phone
+            'phone' => $request->phone,
+            'password' => Hash::make(12345678),
         ]);
         if ($patient) {
             return redirect()->route('patient.index')->with('success', 'Thêm mới bệnh nhân thành công');
