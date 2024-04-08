@@ -199,10 +199,17 @@
                 </ul>
 
                 <div class="ms-lg-3">
-                    <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
-                        Quản lý đăng nhập
-                        <i class="bi-arrow-up-right ms-2"></i>
-                    </a>
+                    @if(Auth::guard('user')->check())
+                        <a class="btn custom-btn custom-border-btn" href="{{ route('user.logout') }}">
+                            Đăng xuất
+                            <i class="bi-arrow-up-right ms-2"></i>
+                        </a>
+                    @else
+                        <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
+                            Đăng nhập
+                            <i class="bi-arrow-up-right ms-2"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -216,28 +223,25 @@
                         <div class="menu-block-wrap">
                             <div class="text-center mb-4 pb-lg-2">
                                 {{--                            <em class="text-white">Dịch vụ của chúng tôi</em>--}}
-                                <h4 class="text-white">Tra cứu lịch sử cuộc hẹn</h4>
+                                <h4 class="text-white">Lịch sử cuộc hẹn</h4>
                             </div>
-                            <form action="#" method="get" class="custom-form contact-form mb-5" role="form">
+{{--                            <form action="#" method="get" class="custom-form contact-form mb-5" role="form">--}}
 
-                                <div class="row ">
-                                    <div class="col-lg-8 col-12 " >
+{{--                                <div class="row ">--}}
+{{--                                    <div class="col-lg-8 col-12 " >--}}
 
-                                        <input style="margin-bottom: 0" type="number" name="phone" id="name" class="form-control" placeholder="Nhập số điện thoại của bạn" required="">
-                                    </div>
-                                    <div class="col-lg-4 col-12 mx-auto">
-                                        <button type="submit" class="form-control">Tra cứu</button>
-                                    </div>
-                                </div>
-                            </form>
+{{--                                        <input style="margin-bottom: 0" type="number" name="phone" id="name" class="form-control" placeholder="Nhập số điện thoại của bạn" required="">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-lg-4 col-12 mx-auto">--}}
+{{--                                        <button type="submit" class="form-control">Tra cứu</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
                             @foreach($appointments as $appointment)
                                 <div class="menu-block">
                                     <div class="d-flex">
-                                        <h6>{{$appointment->code}}</h6>
                                         <h6>{{$appointment->time}}</h6>
-
                                         <span class="underline"></span>
-
                                         <strong class="ms-auto">{{$appointment->price}}đ</strong>
                                     </div>
 

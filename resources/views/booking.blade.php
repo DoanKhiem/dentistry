@@ -191,10 +191,17 @@
                 </ul>
 
                 <div class="ms-lg-3">
-                    <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
-                        Quản lý đăng nhập
-                        <i class="bi-arrow-up-right ms-2"></i>
-                    </a>
+                    @if(Auth::guard('user')->check())
+                        <a class="btn custom-btn custom-border-btn" href="{{ route('user.logout') }}">
+                            Đăng xuất
+                            <i class="bi-arrow-up-right ms-2"></i>
+                        </a>
+                    @else
+                        <a class="btn custom-btn custom-border-btn" href="{{ route('user.login') }}">
+                            Đăng nhập
+                            <i class="bi-arrow-up-right ms-2"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -219,13 +226,13 @@
 
                                     <div class="booking-form-body">
                                         <div class="row">
-                                            <div class="col-lg-6 col-12">
-                                                <input type="text" name="name" id="booking-form-name" class="form-control" placeholder="Họ và Tên" required>
-                                            </div>
+{{--                                            <div class="col-lg-6 col-12">--}}
+{{--                                                <input type="text" name="name" value="{{Auth::guard('user')->name}}" disabled id="booking-form-name" class="form-control" placeholder="Họ và Tên" required>--}}
+{{--                                            </div>--}}
 
-                                            <div class="col-lg-6 col-12">
-                                                <input type="tel" class="form-control" name="phone" placeholder="Phone: 085 456 7890" required="">
-                                            </div>
+{{--                                            <div class="col-lg-6 col-12">--}}
+{{--                                                <input type="tel" class="form-control" name="phone" placeholder="Phone: 085 456 7890" required="">--}}
+{{--                                            </div>--}}
                                             <div class="col-lg-6 col-12">
                                                 <select class="form-control" name="doctor_id" required="">
                                                     <option value="">Chọn bác sĩ</option>
@@ -262,7 +269,7 @@
                             <div class="col-lg-5 col-12 p-0">
                                 <div class="booking-form-image-wrap">
 
-                                    <img src="{{asset('user/images/barman-with-fruits.jpg')}}" class="booking-form-image img-fluid" alt="">
+                                    <img src="{{asset('user/images/barman-with-fruits.png')}}" class="booking-form-image img-fluid" alt="">
                                 </div>
 
                             </div>

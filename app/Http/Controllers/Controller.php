@@ -30,16 +30,16 @@ class Controller extends BaseController
 
     public function history(Request $request)
     {
-        if ($request->filled('phone')) {
-            $patient = Patient::where('phone', $request->phone)->first();
-            if ($patient) {
-                $appointments = Appointment::where('patient_id', $patient->id)->orderBy('created_at', 'desc')->get();
-            } else {
-                $appointments = [];
-            }
-        } else {
-            $appointments = [];
-        }
+//        if ($request->filled('phone')) {
+//            $patient = Patient::where('phone', $request->phone)->first();
+//            if ($patient) {
+                $appointments = Appointment::where('patient_id', Auth::guard('user')->user()->id)->orderBy('created_at', 'desc')->get();
+//            } else {
+//                $appointments = [];
+//            }
+//        } else {
+//            $appointments = [];
+//        }
 
         return view('history', compact('appointments'));
     }
@@ -65,24 +65,24 @@ class Controller extends BaseController
 
     public function bookingCreate(Request $request)
     {
-        $patient = Patient::where('phone', $request->phone)->first();
-//        dd($patient);
-        if ($patient) { // nếu đã tồn tại khách hàng với sđt này
-            $data = $request->all();
-            $status = $patient->update($data);
-        } else {
-            $patient = Patient::create([
-                'code' => 'BN-'.time(),
-                'name' => $request->name,
-                'address' => $request->address,
-                'phone' => $request->phone,
-            ]);
-        }
-
+//        $patient = Patient::where('phone', $request->phone)->first();
+////        dd($patient);
+//        if ($patient) { // nếu đã tồn tại khách hàng với sđt này
+//            $data = $request->all();
+//            $status = $patient->update($data);
+//        } else {
+//            $patient = Patient::create([
+//                'code' => 'BN-'.time(),
+//                'name' => $request->name,
+//                'address' => $request->address,
+//                'phone' => $request->phone,
+//            ]);
+//        }
+//        dd(Auth::guard('user')->user()->id);
         $item = Service::findOrFail($request->service_id);
         $appointment = Appointment::create([
             'code' => 'VN-'.time(),
-            'patient_id' => $patient->id,
+            'patient_id' => Auth::guard('user')->user()->id,
             'doctor_id' => $request->doctor_id,
             'service_id' => $request->service_id,
             'time' => $request->time,

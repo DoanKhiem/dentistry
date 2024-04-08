@@ -9,25 +9,25 @@
 
         <title>Barista Cafe HTML CSS Template</title>
 
-        <!-- CSS FILES -->                
+        <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
-    
+
         <link href="{{asset('user/css/bootstrap.min.css')}}" rel="stylesheet">
-    
+
         <link href="{{asset('user/css/bootstrap-icons.css')}}" rel="stylesheet">
-    
+
         <link href="{{asset('user/css/vegas.min.css')}}" rel="stylesheet">
-    
+
         <link href="{{asset('user/css/tooplate-barista.css')}}" rel="stylesheet">
     </head>
-    
+
     <body>
         <main>
-            <section class="contact-section section-padding" id="section_5">
+            <section class="contact-section section-padding" id="section_5" style="height: 100vh">
                 <div class="container">
                     <div class="d-flex flex-column align-items-center col-12">
                         <div class="col-xl-6">
@@ -51,9 +51,9 @@
                                 <button type="submit" class="form-control">Submit</button>
                             </div>
 
-                            
+
                             <div class="col-12 mx-auto mt-3 text-center">
-                                <p class="text-muted">Don't have an account? <a style="display: unset; color: #ffa453" href="{{ route('user.register') }}">Sign up</a></p>
+                                <p class="text-white">Don't have an account? <a style="display: unset; color: #ffa453" href="{{ route('user.register') }}">Sign up</a></p>
                             </div>
                         </form>
                     </div>
