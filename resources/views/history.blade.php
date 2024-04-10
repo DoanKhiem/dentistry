@@ -186,7 +186,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="{{route('home')}}">Home</a>
+                        <a class="nav-link click-scroll" href="{{route('home')}}">Trang chủ</a>
                     </li>
 
                     <li class="nav-item">

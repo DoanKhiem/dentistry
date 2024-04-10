@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Barista Cafe HTML CSS Template</title>
+        <title>Login</title>
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
 
     <body>
         <main>
-            <section class="contact-section section-padding" id="section_5" style="height: 100vh">
+            <section class=" section-padding" id="section_5" style="height: 100vh; background-color: #0F4FAF">
                 <div class="container">
                     <div class="d-flex flex-column align-items-center col-12">
                         <div class="col-xl-6">
