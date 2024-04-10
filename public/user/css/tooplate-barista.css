@@ -11,11 +11,11 @@ https://www.tooplate.com/view/2137-barista-cafe
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #BC6C25;
-  --secondary-color:              #DDA15E;
-  --section-bg-color:             #b78752;
-  --custom-btn-bg-color:          #BC6C25;
-  --custom-btn-bg-hover-color:    #DDA15E;
+  --primary-color: #253ebc;
+  --secondary-color: #5e7cdd;
+  --section-bg-color: #5266b7;
+  --custom-btn-bg-color: #2550bc;
+  --custom-btn-bg-hover-color: #5e82dd;
   --dark-color:                   #000000;
   --p-color:                      #717275;
   --border-color:                 #7fffd4;
