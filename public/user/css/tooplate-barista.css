@@ -910,7 +910,7 @@ strong {
 
 .custom-form .form-control:hover,
 .custom-form .form-control:focus {
-  background: var(--primary-color);
+  /*background: var(--primary-color);*/
   border-color: transparent;
 }
 
@@ -940,7 +940,7 @@ strong {
 
 .contact-form .form-control,
 .booking-form .form-control {
-  background-color: transparent;
+  background-color: white;
   border-color: rgba(255, 255, 255, 0.25);
 }
 
