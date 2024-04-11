@@ -945,7 +945,7 @@ strong {
 }
 
 .booking-form .form-control {
-  color: var(--white-color);
+  color: black;
 }
 
 .custom-form input::-webkit-input-placeholder,
